@@ -32,3 +32,4 @@ if(typeof Object.beget !== 'function'){
 		return new F();
 	}
 }
+
