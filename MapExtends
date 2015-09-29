@@ -56,7 +56,7 @@
 
     /**
      * MarkerClusterer
-     * @class 用来解决加载大量点要素到地图上产生覆盖现象的问题，并提高性能
+     * @class 用来解决加载大量点要素到地图上产生覆盖现象的问题
      * @constructor
      * @param {Map} map 地图的一个实例。
      * @param {Json Object} options 可选参数，可选项包括：<br />
@@ -76,7 +76,7 @@
         var opts = options || {};
         this._maxZoom = opts["maxZoom"] || 18;
         this._minClusterSize = opts["minClusterSize"] || 2;
-        this._gridSize = opts["gridSize"] || 60;
+        this._threshold = opts["threshold"] || 60;
 
         // var that = this;
         // this._map.addEventListener("zoomend",function(){
@@ -142,7 +142,7 @@
         var markerPixel = getPixelOfMarker(this._map, marker);
         var x = Math.abs(clusterPixel.x - markerPixel.x);
         var y = Math.abs(clusterPixel.y - markerPixel.y);
-        if (x < this._gridSize && y < this._gridSize) {
+        if (x < this._threshold && y < this._threshold) {
             var index = indexOf(marker, this._markers);
             if(index !== -1){
                 this._temp.push(index);
@@ -156,10 +156,11 @@
      * 重新生成，比如改变了属性等
      * @return 无返回值
      */
-    MarkerClusterer.prototype.rebuild = function (gridSize) {
-        this._gridSize = gridSize;
-        this._clearLastClusters();
+    MarkerClusterer.prototype.rebuild = function (threshold) {
+        this._threshold = threshold;
+        this._clusters = [];
         this._createClusters();
+        return this._getClustersPoint();
     };
-    
+
 })();
