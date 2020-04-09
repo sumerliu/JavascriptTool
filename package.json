@@ -1,0 +1,23 @@
+{
+  "name": "javascripttool",
+  "version": "1.0.0",
+  "description": "do some js tool for myself",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://sumerliu@github.com/sumerliu/JavascriptTool.git"
+  },
+  "keywords": [
+    "tool",
+    "javascript"
+  ],
+  "author": "sumer.liu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sumerliu/JavascriptTool/issues"
+  },
+  "homepage": "https://github.com/sumerliu/JavascriptTool#readme"
+}
